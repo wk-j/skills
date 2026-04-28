@@ -1,5 +1,5 @@
 ---
-name: github-comment
+name: post-github-comment
 description: Post analysis comments on GitHub issues with AI attribution, appropriate labels, and a non-developer-friendly structure
 ---
 
