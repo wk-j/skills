@@ -1,5 +1,5 @@
 ---
-name: analyze-issue
+name: analyze-github-issue
 description: Analyze GitHub issues and produce a structured markdown analysis document before any code changes — routes bug/improvement issues and question issues into separate document folders
 ---
 
