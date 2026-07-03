@@ -22,7 +22,7 @@ Do not use this skill for:
 
 Publish wiki page content in natural, native Thai. Do not directly translate English source text sentence-by-sentence. Rewrite for Thai readers while preserving technical accuracy. Keep code identifiers, file paths, API names, commands, package names, and protocol terms in their original spelling when translating them would reduce precision.
 
-For OKF frontmatter, write reader-facing fields (`title`, `description`) in natural Thai. Keep machine-facing fields stable and parseable: `type` uses the agreed vocabulary, `resource` keeps the original path or URL, `tags` use short technical slugs, and `timestamp` stays ISO-formatted.
+For OKF metadata fields, write reader-facing fields (`title`, `description`) in natural Thai. Keep machine-facing fields stable and parseable: `type` uses the agreed vocabulary, `resource` keeps the original path or URL, `tags` use short technical slugs, and `timestamp` stays ISO-formatted.
 
 Use stable English or technical slugs for filenames and paths, even when the page title is Thai. Put the natural Thai name in `title` and the H1 heading. Do not rename a file just to improve Thai wording; rename only when the concept identity changes.
 
@@ -44,7 +44,20 @@ Use a `Wiki Update Log` page only when maintenance is ongoing, multiple pages ch
 
 ## Open Knowledge Format compatibility
 
-Write wiki concept pages as markdown with YAML frontmatter. Each page must include `type`; include `title`, `description`, `resource`, `tags`, and `timestamp` when known. Use the six categories above as `type` values unless the repository has a better established vocabulary.
+Write wiki concept pages as markdown with an OKF metadata block first. GitHub Wiki does not hide YAML frontmatter — a bare `---` block renders as a horizontal rule plus stray metadata text at the top of the page — so wrap the YAML in an HTML comment instead. GitHub hides the comment while the YAML stays machine-parseable:
+
+```markdown
+<!-- okf
+type: components
+title: ระบบคิวงาน
+description: จัดการงานเบื้องหลังผ่านคิวและ worker
+resource: src/queue/
+tags: [queue, worker]
+timestamp: 2026-07-03T00:00:00Z
+-->
+```
+
+Each page must include `type`; include `title`, `description`, `resource`, `tags`, and `timestamp` when known. Use the six categories above as `type` values unless the repository has a better established vocabulary. When auditing existing pages, convert any bare `---` frontmatter to this comment-wrapped form.
 
 Set `resource` to the primary source the page describes or verifies, such as a repo-relative code path, docs path, release, issue, or PR. Do not set `resource` to the wiki page's own URL unless the page is documenting the wiki itself. Put additional evidence under a `## Sources` section in the markdown body.
 
@@ -62,8 +75,8 @@ Keep `_Sidebar.md` minimal and GitHub-specific: link to `Home.md`, major categor
 3. **Inventory pages and navigation.** Read existing `*.md` pages, especially `Home.md`, `_Sidebar.md`, and `_Footer.md`. Preserve page names, links, and manually curated sections unless the user explicitly asks to change them.
 4. **Ground wiki facts in the source of truth.** Read the main repo as evidence, but do not edit or commit it during wiki maintenance unless the original request explicitly asks for main-repo changes. When syncing from the main repo, verify claims against code, existing docs, issues, releases, or the specific user request. The wiki should not invent behavior or copy stale docs without checking.
 5. **Plan the edit.** Before changing files, produce a compact internal plan: page, action (`create`, `edit`, `rename`, `delete`), reason, and source evidence. Do not interrupt the user for routine updates.
-6. **Edit locally.** Make the smallest page changes that satisfy the request. Keep pages Open Knowledge Format-compatible: YAML frontmatter first, normal markdown links for relationships, stable filenames for concept identity, and natural Thai prose for reader-facing content. Maintain `_Sidebar.md` only as GitHub Wiki navigation, not as the source of truth.
-7. **Verify before publishing.** Inspect the diff, run markdown/frontmatter checks when available, and scan for secrets or private data. If a requested update would require deleting pages, renaming pages, publishing secrets, or overwriting broad human-authored content without explicit instruction in the original request, stop and report the blocker instead of guessing.
+6. **Edit locally.** Make the smallest page changes that satisfy the request. Keep pages Open Knowledge Format-compatible: comment-wrapped OKF metadata block first, normal markdown links for relationships, stable filenames for concept identity, and natural Thai prose for reader-facing content. Maintain `_Sidebar.md` only as GitHub Wiki navigation, not as the source of truth.
+7. **Verify before publishing.** Inspect the diff, run markdown/metadata checks when available, confirm no page starts with a bare `---` frontmatter block, and scan for secrets or private data. If a requested update would require deleting pages, renaming pages, publishing secrets, or overwriting broad human-authored content without explicit instruction in the original request, stop and report the blocker instead of guessing.
 8. **Publish automatically after verification.** Commit and push only the wiki repository with a clear message, then verify the public wiki URL or GitHub page view if accessible. Report what changed after publishing.
 
 ## Safety rules
