@@ -69,6 +69,8 @@ Link to source files in the **main repo** with full URLs (`https://github.com/OW
 
 Link issues, PRs, and commits with full-URL markdown links: `[#325](https://github.com/OWNER/REPO/issues/325)`, not a bare `#325`. GitHub autolinks `#325` shorthand in issue/PR/commit text in the main repo, but **not** on wiki pages — there a bare `#325` renders as plain text. This applies inside tables too (e.g. an `Issue` column): write `[#325](…/issues/325)` in each cell so the number is clickable.
 
+Point each issue/PR URL at the repository that actually hosts it, which is often **not** the wiki's own repo — issues are frequently tracked in a separate project or tracker repo. Confirm the owning repo before writing the link (ask, or infer from context) rather than defaulting to the wiki's repo; a link to the wrong repo lands on an unrelated issue or a 404. Cross-repo shorthand like `owner/repo#325` also does not autolink on wiki pages, so always use the explicit full URL to the correct repo.
+
 Use `index.md` pages for category navigation when the wiki has enough pages to need hierarchy. Update `index.md` whenever creating a page, deleting or renaming a page, or changing a page's `title`, `description`, `type`, or `tags`; skip index edits for body-only changes that do not affect navigation. Use `log.md` for chronological history when the update-log rule applies.
 Keep `_Sidebar.md` minimal and GitHub-specific: link to `Home.md`, major categories, or `index.md`, but do not list every concept page there. Create or update `_Sidebar.md` only when navigation is missing or the top-level category structure changes; `index.md` remains the portable navigation source of truth.
 
