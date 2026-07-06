@@ -10,8 +10,7 @@ Produce a structured analysis doc for a GitHub issue. Always write the doc **bef
 ### Rules
 
 1. Write the analysis doc to disk **first**, automatically, before any implementation.
-2. Confirm with the user before implementing a fix, posting a GitHub comment, or creating any external resource (ticket, PR, etc.). Never run `gh issue comment` without explicit approval.
-3. **Audit every call site, not just the one the issue points at.** Before proposing a fix that adds/removes/changes a filter, guard, or condition, enumerate every call site in the codebase (and, for re-implementations, every corresponding site in the original source) that uses the same data structure / list / loop. Each call site needs its own parity check — never share a filter verdict across call sites. Common trap: when code refactors `N original methods → 1 method`, filters belonging to one original method get applied to every call site of the merged method, silently breaking the others.
+2. **Audit every call site, not just the one the issue points at.** Before proposing a fix that adds/removes/changes a filter, guard, or condition, enumerate every call site in the codebase (and, for re-implementations, every corresponding site in the original source) that uses the same data structure / list / loop. Each call site needs its own parity check — never share a filter verdict across call sites. Common trap: when code refactors `N original methods → 1 method`, filters belonging to one original method get applied to every call site of the merged method, silently breaking the others.
 
 ### Classification
 
@@ -26,9 +25,9 @@ Ask the user if ambiguous. Follow project conventions in `CLAUDE.md` if they dif
 
 1. **Fetch**: `gh issue view <n> --repo <owner>/<repo> --comments`. Extract image URLs (`user-attachments/assets/…`), download with `curl -sL -H "Authorization: token $(gh auth token)" <url> -o /tmp/...`, and `Read` them — screenshots often contain critical context.
 2. **Classify** using the table above.
-3. **Investigate**: read the relevant code, query DB/external systems as needed, identify root cause, and capture file paths and snippets. Apply Rule 3 — enumerate all call sites before forming the fix.
+3. **Investigate**: read the relevant code, query DB/external systems as needed, identify root cause, and capture file paths and snippets. Apply Rule 2 — enumerate all call sites before forming the fix.
 4. **Write the doc** to `docs/{cr|question}/{repo}/{issue-id}/{kebab-name}.md` (3–5 word descriptive name). Create folders as needed.
-5. **Suggest next steps** (fix, GitHub comment, tracking task) — do not act on them without approval.
+5. **Proceed with next steps** (fix, GitHub comment, tracking task) as the issue warrants.
 
 ### Audience
 
