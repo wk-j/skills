@@ -20,7 +20,11 @@ Do not use this skill for:
 
 ## Language
 
-Publish wiki page content in natural, native Thai. Do not directly translate English source text sentence-by-sentence. Rewrite for Thai readers while preserving technical accuracy. Keep code identifiers, file paths, API names, commands, package names, and protocol terms in their original spelling when translating them would reduce precision.
+Publish wiki page content in natural, native Thai. Do not directly translate English source text sentence-by-sentence. Rewrite for Thai readers while preserving technical accuracy.
+
+Keep technical terms in English — do not translate them into Thai. This covers code identifiers, file paths, API names, commands, package names, and protocol terms, and also established software vocabulary such as deploy, endpoint, cache, middleware, branch, commit, pull request, queue, worker, token, and framework/library names. Thai readers of a technical wiki understand these terms in English; a Thai coinage or transliteration-plus-gloss is harder to recognize and search for. Write the surrounding sentence in Thai and drop the English term in as-is (e.g. "ระบบจะ retry งานที่ fail ผ่าน queue เดิม"), rather than inventing Thai equivalents like "คิวงาน" for queue or "จุดปลายทาง" for endpoint. Translate only genuinely non-technical words.
+
+On a technical term's **first appearance in a page**, gloss it: follow the term with a short plain-Thai explanation in parentheses, e.g. "queue (แถวรอประมวลผลงาน)" or "middleware (โค้ดที่ดักประมวลผล request ก่อนถึง handler หลัก)". After the first use, write the bare term. Gloss per page, not per wiki — readers land on pages directly, so do not assume they read another page first. Skip the gloss for terms so universal they need no explanation to any developer (API, URL, commit) and for code identifiers whose meaning is the surrounding sentence's whole point. If the same specialized terms recur across many pages, create a `Glossary` page collecting them and link the first occurrence to it instead of repeating long glosses.
 
 For OKF metadata fields, write reader-facing fields (`title`, `description`) in natural Thai. Keep machine-facing fields stable and parseable: `type` uses the agreed vocabulary, `resource` keeps the original path or URL, `tags` use short technical slugs, and `timestamp` stays ISO-formatted.
 
@@ -49,8 +53,8 @@ Write wiki concept pages as markdown with an OKF metadata block first. GitHub Wi
 ```markdown
 <!-- okf
 type: components
-title: ระบบคิวงาน
-description: จัดการงานเบื้องหลังผ่านคิวและ worker
+title: ระบบ queue งาน
+description: จัดการงานเบื้องหลังผ่าน queue และ worker
 resource: src/queue/
 tags: [queue, worker]
 timestamp: 2026-07-03T00:00:00Z
