@@ -1,0 +1,4 @@
+interface:
+  display_name: "Define Development Checkpoint"
+  short_description: "Map Thai requirements to complete checklists"
+  default_prompt: "Use $development-checklist to inspect an existing project and create a self-contained Thai checkpoint organized by requirement, with all completed and open tasks needed to fulfill each requirement."

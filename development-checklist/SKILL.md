@@ -1,5 +1,5 @@
 ---
-name: define-project-development-checklist
+name: development-checklist
 description: Inspect an existing software project and produce a practical, project-specific development checklist or overall development checkpoint in clear Thai for non-developers. Define each verified requirement clearly, map every development task needed to fulfill it, and show both completed and open work. Use for an existing project, feature, change, bug fix, migration, or integration when the user explicitly asks for a complete task list, status checklist, or requirement-by-requirement checkpoint. Ground every requirement and status in current code, documentation, tests, and configuration. Do not trigger for deployment, release, production-readiness, operational handoff, generic planning, English-only output, generic checklists, or greenfield work without an existing project.
 ---
 
