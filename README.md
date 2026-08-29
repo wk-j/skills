@@ -7,6 +7,7 @@ A collection of Claude Code skills. Each skill lives in its own top-level direct
 | Skill | Purpose | Source |
 | --- | --- | --- |
 | [analyze-github-issue](./analyze-github-issue/SKILL.md) | Analyzes GitHub issues into structured markdown docs (bug/improvement vs question) before any code changes. | Authored in this repo |
+| [cr-assessment](./cr-assessment/SKILL.md) | Assesses a change request against the existing system and recommends the smallest change that satisfies it. | Authored in this repo |
 | [development-checklist](./development-checklist/SKILL.md) | Produces evidence-based Thai development checklists for non-developers in existing projects. | Authored in this repo |
 | [humanize-thai](./humanize-thai/SKILL.md) | Rewrites AI-sounding Thai prose into natural Thai without changing its meaning. | Adapted from [blader/humanizer](https://github.com/blader/humanizer) |
 | [maintain-github-wiki](./maintain-github-wiki/SKILL.md) | Maintains and auto-publishes natural-Thai, OKF-compatible GitHub Wiki pages from repository knowledge. | Authored in this repo |
