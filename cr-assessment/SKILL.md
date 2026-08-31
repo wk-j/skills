@@ -1,6 +1,6 @@
 ---
 name: cr-assessment
-description: Assess a change request (CR) against an existing system, recommend the smallest change that genuinely satisfies it, and estimate mandays twice — built by a human developer versus built with a coding agent — so the two can be compared. Classifies the CR on a change tier ladder from config-only to architectural, maps blast radius from real code evidence, and flags when the minimal option is the expensive one. Use before the build decision, when asked whether a CR is worth doing, what it will break, how many mandays it costs, whether an agent would be faster, or which approach to take. Do not use after the decision is made and the user wants a task list, or for greenfield work with no existing system to change.
+description: Assess a change request (CR) against an existing system, recommend the smallest change that genuinely satisfies it, and estimate mandays twice — built by a human developer versus built with a coding agent — so the two can be compared. Classifies the CR on a change tier ladder from config-only to architectural, maps blast radius from real code evidence, and flags when the minimal option is the expensive one. Effort is reported in mandays only — the assessment never converts it into money, and makes no budget, price, rate, or commercial worth judgment. Use before the build decision, when asked what a CR will break, how many mandays it takes, whether an agent would be faster, or which approach to take. Do not use after the decision is made and the user wants a task list, or for greenfield work with no existing system to change.
 ---
 
 # Assess a Change Request
@@ -20,6 +20,14 @@ Do not use this skill when:
 - The input is a GitHub issue needing a structured analysis document — use `analyze-github-issue`, then assess its output with this skill if a decision is still open.
 - The user wants the change implemented, not assessed.
 - There is no existing system to change. This skill reasons about impact on what exists; greenfield work has no blast radius to map.
+
+## Out of scope: money
+
+Effort is reported in mandays. Stop there. Do not convert mandays into a price, a budget figure, a day rate, a currency amount, or a return-on-investment argument, and do not judge whether the change is worth its money.
+
+Mandays are a technical measurement: how much developer time the work consumes, given this codebase and this blast radius. What a manday is worth, whether the budget covers it, and whether the business should spend it are the reader's decisions, made with information this assessment does not have.
+
+The same line applies to phrasing. "This option takes 8-12 mandays" is in scope. "This option is too expensive to justify" is not — say instead which tier it sits at and what it consumes, and let the reader draw the commercial conclusion.
 
 ## Core principle
 
@@ -155,6 +163,7 @@ Confirm the assessment:
 - Charges directing and reviewing the agent to the agent column, and never reports an agent saving on a coordination-heavy option without explaining it.
 - Keeps waiting time out of the manday figures and reports it separately as elapsed time.
 - Labels the estimates as a basis for comparison, not as a commitment.
+- Reports effort in mandays only, with no price, budget, rate, or currency figure, and no claim that the change is or is not worth its money.
 - Names who must answer each open question, and which part of the recommendation would change.
 - Reads as though a Thai tech lead wrote it for a decision maker, not as a translated template.
 

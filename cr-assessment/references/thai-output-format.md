@@ -8,6 +8,12 @@ Read the project's existing Thai-facing documents first and reuse their establis
 
 The body is written for someone who decides but does not read code. The evidence section at the end is written for whoever will build it. Keep them apart: file paths, schema names, and commands belong in the evidence section, not scattered through the recommendation. The decision maker must be able to stop reading before that section and still have decided correctly.
 
+## Mandays yes, money no
+
+Report effort as คน-วัน. Never turn it into บาท, a budget figure, a day rate, or an argument about whether the change is worth its price. The reader owns that decision and has information this document does not.
+
+Say what the work consumes and where the difficulty sits; do not write sentences like "แพงเกินกว่าจะคุ้ม" or "ไม่คุ้มกับงบที่มี".
+
 ## Title
 
 Name the change and the decision at stake, the way a Thai project owner would refer to it in a meeting. Do not translate the CR's English title literally.
@@ -73,7 +79,7 @@ Report waiting time separately from mandays, phrased as elapsed time, so nobody 
 
 State the assumptions the numbers rest on: whether the developer already knows this codebase, whether tests cover the affected area, and whether the agent has enough project context to work here. Give a range with a confidence level and a one-line reason for that level.
 
-Close the section by saying plainly that these figures are for comparing options, not a quotation or a commitment.
+Close the section by saying plainly that these figures are for comparing options, not a quotation or a commitment. Keep them in คน-วัน — do not price them, and do not tell the reader whether the number is acceptable.
 
 ## When the cheapest option is the expensive one
 
