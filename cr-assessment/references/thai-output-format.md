@@ -71,9 +71,14 @@ Do not include an option nobody would choose. If only one approach is viable, sa
 
 Compare the options in one table the reader can scan, with a column for a human developer and a column for a developer working with a coding agent. Make clear in a sentence above it that both columns count human คน-วัน — the agent column already includes directing the agent and reviewing its output, so the two columns are comparable.
 
-Below the table, break the recommended option down by work type: งานกลไก, งานตัดสินใจและออกแบบ, งานประกอบและตรวจสอบ, and งานที่ต้องรอคนอื่น. This is where the reader learns *why* the gap between the columns is the size it is, which matters more than the totals. Keep the four names consistent wherever they appear.
+Below the table, break the recommended option down into the work items it requires, in one table with a header row and three columns: งาน, Dev ทำเอง, Dev + agent. End with a total row that matches the recommended option's figures in the comparison table.
 
-Explain the gap in one or two sentences of plain Thai. If the agent column saves little, say why — usually because the work is mostly decisions and coordination, which an agent does not compress. If it saves a lot, say which part is mechanical enough for that to hold.
+- Each row is a task someone could pick up and finish, named by what gets done and where, in plain Thai — for example "เพิ่ม query ดึง cost centre จากข้อมูลแผนกของผู้เบิก" or "ทดสอบกับไฟล์ export จริงของเดือนที่แล้ว".
+- Do not add a work-type or category column, and do not group rows under category headings. The skill's work types are for estimating only; the reader sees their effect in each row's two numbers.
+- Give reviewing the agent's output its own row, so the reader sees what it costs.
+- Keep file paths out of the rows; they belong in the evidence section.
+
+Explain the gap in one or two sentences of plain Thai, pointing at the rows that carry it and saying why in everyday words. If the agent column saves a lot, name the rows where code is written against a settled spec, which an agent does quickly. If it saves little, name the rows that are decisions, agreements with other people, or UAT, which take the same people the same time either way. Never introduce a category name to explain it.
 
 Report waiting time separately from mandays, phrased as elapsed time, so nobody reads a two-week wait as ten mandays of work.
 

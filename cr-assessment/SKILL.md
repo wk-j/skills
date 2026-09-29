@@ -109,9 +109,15 @@ Estimate every option twice: built by a human developer, and built by a develope
 
 Both columns measure the same thing: **human mandays consumed.** The agent column is not how long the agent runs. It is how much of a person's day the work still costs when an agent does the typing, including the time spent directing it and reviewing what it produced. An agent estimate that omits review is not an estimate, it is a sales pitch.
 
-#### Estimate by work type, not as one number
+#### Estimate by work item, tagged by work type
 
-Agent leverage is not uniform. Split each option's work into these four types, estimate each, then total them. The split is what makes the comparison honest — and it is usually more informative than the totals.
+Do not estimate an option as one number, and do not estimate it as four category totals either. List the concrete work items the option requires — the actual tasks a developer would pick up and finish, each tied to the part of the system it touches — estimate each item twice, then total them.
+
+A work item names the task, not the category: "add a query that reads cost centre from department data" is a work item; "mechanical work" is not. If an item mixes types, split it until each item has one.
+
+While estimating, tag every item with one of these four work types. Agent leverage is not uniform, and the tags are what keep the comparison honest — they decide how much each item compresses in the agent column.
+
+The work types are an estimating tool, not output. Never print them in the assessment as a column, heading, or label. The reader sees their effect in each item's two numbers, and the explanation of the gap says it in everyday words.
 
 | Work type | Examples | Agent leverage |
 | --- | --- | --- |
@@ -159,7 +165,8 @@ Confirm the assessment:
 - States the blast radius in terms of what people and systems notice, not only which files change.
 - Applies the step-5 trap check explicitly, and says so when the trap does not apply.
 - Gives every option a rollback or disable path, or says plainly that there is none.
-- Gives every option both manday estimates, broken down by the four work types, with the assumptions and confidence stated.
+- Gives every option both manday estimates, built from concrete work items each tagged with one of the four work types, with the assumptions and confidence stated.
+- Shows the recommended option's breakdown as named work items, with no work-type column, heading, or label.
 - Charges directing and reviewing the agent to the agent column, and never reports an agent saving on a coordination-heavy option without explaining it.
 - Keeps waiting time out of the manday figures and reports it separately as elapsed time.
 - Labels the estimates as a basis for comparison, not as a commitment.
