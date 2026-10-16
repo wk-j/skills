@@ -65,8 +65,10 @@ DATE_PATTERNS = [
     ("dmy_num", re.compile(r"(\d{1,2})/(\d{1,2})/(\d{4})" + TIME_RE + TZ_RE)),
 ]
 
+# "md" counts only right after a number ("3 md", "0.5md"), so file names like CONTEXT.md never match.
 ESTIMATE_RE = re.compile(
-    r"(?i)(man-?days?|mandays?|\bmd\b|story\s*points?|\bestimate[sd]?\b|ประมาณการ|เวลาที่ใช้)[^\n]{0,80}?\d"
+    r"(?i)(?:(?:man-?days?|mandays?|story\s*points?|\bestimate[sd]?\b|ประมาณการ|เวลาที่ใช้)[^\n]{0,80}?\d"
+    r"|\b\d+(?:\.\d+)?\s*md\b)"
 )
 FENCE_RE = re.compile(r"```.*?```", re.S)
 

@@ -80,11 +80,12 @@ In preview mode, stop after this step and report the plan.
 
 ## Step 4: Event format
 
-- **Title:** `Deadline HH:MM · #N <short title>` for a timed deadline, or `Deadline · #N <short title>` for a date-only one. Strip bracket tags such as `[Duedate: …]` and keep it under about 80 characters.
+- **Title:** `Deadline HH:MM · <repo>#N <short title>` for a timed deadline, or `Deadline · <repo>#N <short title>` for a date-only one, where `<repo>` is the repository name without the owner (for example `Deadline · soc-webapi#67 …`). A bare `#67` is ambiguous as soon as the calendar holds deadlines from more than one repository. Strip bracket tags such as `[Duedate: …]` and keep the title under about 80 characters.
 - **Time:** a timed deadline becomes a 30-minute block that **ends at the deadline**, so it sits just before the cutoff in day view. A date-only deadline becomes an all-day event on that date.
 - **Availability:** free (`AVAILABILITY_FREE`). A deadline is a marker, not a meeting. Marking it busy would block other people's scheduling and make the conflict check count the marker as a commitment.
 - **Description** (HTML is fine): the deadline plus where it came from, the issue link, the estimate if one was found, and the `gh-sync-key` line last. Do not copy issue bodies; they can hold customer data, and the calendar is visible on more devices and to more people than the repository.
-- **Reminders:** popup 1 day before and 60 minutes before. If the deadline falls outside working hours or on a non-working day, add a popup at the end of the previous working day as well. For work due Saturday 06:00, a 05:00 Saturday reminder is useless.
+- **Reminders, timed deadline:** popup 1 day before and 60 minutes before. If the deadline falls outside working hours or on a non-working day, add a popup at the end of the previous working day as well. For work due Saturday 06:00, a 05:00 Saturday reminder is useless.
+- **Reminders, all-day deadline:** reminder minutes count back from 00:00 of the deadline date, so "60 minutes before" would fire at 23:00 the night before. Instead, put popups at 09:00 and at the end of working hours on the last working day before the deadline date: `minutes = days_back × 1440 − minutes_after_midnight`. For the day before, that is 900 (09:00) and 360 (18:00); for a Monday deadline with Friday as the last working day, 3780 and 3240.
 - Set `notificationLevel: NONE` and add no attendees.
 
 ## Step 5: Check conflicts
@@ -116,7 +117,7 @@ Leave out any section that has nothing in it.
 When you start, analyze, implement, or close an issue, or create an issue or document that states a due date:
 
 1. Run the collector with `--issue N`. When you create a new issue, do it after creation, because the sync key needs the issue number.
-2. If the issue has a deadline, apply Steps 2–4 for that issue only and add one line to your final report (for example "Calendar: deadline for #1286 updated to 17 Oct 06:00").
+2. If the issue has a deadline, apply Steps 2–4 for that issue only and add one line to your final report (for example "Calendar: deadline for tli-api-service#1286 updated to 17 Oct 06:00").
 3. If it has no deadline, do nothing and say nothing.
 
 Do this at most once per issue per session, and never let it interrupt the main task. If the calendar connector is missing here, note it in one line and carry on with the main task.
