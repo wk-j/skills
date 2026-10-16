@@ -39,3 +39,15 @@ _Avoid_: Approval-gated wiki publishing
 **Natural Thai wiki prose**:
 Thai reader-facing wiki content written idiomatically for native Thai readers while preserving exact technical names where needed.
 _Avoid_: Direct translation from English
+
+**Deadline source**:
+A place a GitHub issue states its deadline: a Projects date field, a title tag, a comment, the body, or a milestone due date. Only a keyword followed by a complete date counts.
+_Avoid_: Due hint, estimated date
+
+**Deadline event**:
+The single calendar event that mirrors one issue's deadline. It is a free (non-blocking) marker that ends at the deadline, not a work block.
+_Avoid_: Task event, reminder
+
+**Sync key**:
+The `gh-sync-key: OWNER/REPO#NUMBER` line at the end of a deadline event's description that ties the event to exactly one issue.
+_Avoid_: Event ID, tag
